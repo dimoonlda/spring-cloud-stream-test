@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: order-service
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 127.0.0.1
+          defaultBrokerPort: 9092
+          headers:
+            - X-B3-TraceId
+            - X-B3-SpanId
+            - X-B3-Sampled
+            - X-B3-ParentSpanId
+            - X-Span-Name
+            - X-Span-Export
+            - X-Process-Id
+            - spanId
+            - spanSampled
+            - spanProcessId
+            - spanParentSpanId
+            - spanTraceId
+            - spanName
+            - messageSent
+      bindings:
+        input:
+          destination: ex.stream.in
+#          binder: kafka1
+        output:
+          destination: ex.stream.out
+          group: order
+#          binder: kafka1
+#      binders:
+#        kafka1:
+#          type: kafka
+#          environment:
+#            spring:
+#              kafka:
+#                host: 127.0.0.1
+#                port: 9092
+server:  
+  port: ${PORT:2222}

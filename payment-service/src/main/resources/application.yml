@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: payment-service
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 127.0.0.1
+          defaultBrokerPort: 9092
+          headers:
+            - X-B3-TraceId
+            - X-B3-SpanId
+            - X-B3-Sampled
+            - X-B3-ParentSpanId
+            - X-Span-Name
+            - X-Span-Export
+            - X-Process-Id
+            - spanId
+            - spanSampled
+            - spanProcessId
+            - spanParentSpanId
+            - spanTraceId
+            - spanName
+            - messageSent
+        sleuth:
+          enabled: true
+      bindings:
+        input:
+          destination: ex.stream.out2
+          group: payment
+#          binder: kafka1
+        output:
+          destination: ex.stream.out2
+#          binder: kafka1
+#      binders:
+#        kafka1:
+#          type: kafka
+#          environment:
+#            spring:
+#              kafka:
+#                host: 127.0.0.1
+#                port: 9092
+#                headers:
+#                  - X-B3-TraceId
+#                  - X-B3-SpanId
+#                  - X-B3-Sampled
+#                  - X-B3-ParentSpanId
+#                  - X-Span-Name
+#                  - X-Span-Export
+
+server:  
+  port: ${PORT:2225}
+logging:
+  level:
+    org.springframework.cloud.stream: debug

@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: product-service
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 127.0.0.1
+          defaultBrokerPort: 9092
+          headers:
+            - X-B3-TraceId
+            - X-B3-SpanId
+            - X-B3-Sampled
+            - X-B3-ParentSpanId
+            - X-Span-Name
+            - X-Span-Export
+            - X-Process-Id
+            - spanId
+            - spanSampled
+            - spanProcessId
+            - spanParentSpanId
+            - spanTraceId
+            - spanName
+            - messageSent
+      bindings:
+        input:
+          destination: ex.stream.out
+          group: product
+        output:
+          destination: ex.stream.out2
+
+server:  
+  port: ${PORT:2223}

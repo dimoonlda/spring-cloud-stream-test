@@ -1,0 +1,39 @@
+spring.application.name: zipkin
+
+logging:
+  level.org.springframework.cloud: DEBUG
+  level.org.springframework.cloud.sleuth: TRACE
+  level.org.springframework.cloud.sleuth.log: DEBUG
+  level.org.springframework.cloud.sleuth.trace: DEBUG
+  level.org.springframework.cloud.sleuth.instrument.rxjava: DEBUG
+
+server:
+  port: 9411
+
+spring:
+  sleuth:
+    enabled: false
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 127.0.0.1
+          defaultBrokerPort: 9092
+          headers:
+            - X-B3-TraceId
+            - X-B3-SpanId
+            - X-B3-Sampled
+            - X-B3-ParentSpanId
+            - X-Span-Name
+            - X-Span-Export
+            - X-Process-Id
+            - spanId
+            - spanSampled
+            - spanProcessId
+            - spanParentSpanId
+            - spanTraceId
+            - spanName
+            - messageSent
+zipkin:
+  store:
+    type: mem
