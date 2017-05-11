@@ -40,3 +40,5 @@ spring:
 #                port: 9092
 server:  
   port: ${PORT:2222}
+logging:
+  level.pl.piomin: debug

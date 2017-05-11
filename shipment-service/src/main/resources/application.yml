@@ -51,5 +51,4 @@ spring:
 server:  
   port: ${PORT:2224}
 logging:
-  level:
-    org.springframework.cloud.stream: debug
+  level.pl.piomin: debug
