@@ -23,7 +23,7 @@ import pl.piomin.service.common.message.ShipmentType;
 
 
 @SpringBootApplication
-@EnableBinding(Source.class)
+//@EnableBinding(Source.class)
 public class Application {
 
 	protected Logger logger = Logger.getLogger(Application.class.getName());
@@ -35,7 +35,7 @@ public class Application {
 	}
 
 	@Bean
-	@InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "30000", maxMessagesPerPoll = "1"))
+//	@InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "30000", maxMessagesPerPoll = "1"))
 	public MessageSource<Order> orderSource() {
 		return () -> {
 			Order o = new Order(index++, OrderType.PURCHASE, LocalDateTime.now(), OrderStatus.NEW, new Product("Example#2"), new Shipment(ShipmentType.SHIP));

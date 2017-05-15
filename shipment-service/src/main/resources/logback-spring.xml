@@ -62,7 +62,7 @@
     </appender>
     ​​
     <root level="ERROR">
-        <appender-ref ref="GELF"/>
+        <appender-ref ref="console"/>
         <!-- uncomment this to have also JSON logs -->
         <!--<appender-ref ref="logstash"/>-->
         <!--<appender-ref ref="flatfile"/>-->
