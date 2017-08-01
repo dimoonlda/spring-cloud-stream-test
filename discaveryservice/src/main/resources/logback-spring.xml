@@ -2,7 +2,7 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     ​
-    <springProperty scope="context" name="springAppName" source="spring.application.name" defaultValue="be-greylog.youa.vn.ua"/>
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
     <springProperty scope="context" name="graylogHost" source="fms.graylog.host"/>
     <!-- Example for logging into the build folder of your project -->
     <property name="LOG_FILE" value="${BUILD_FOLDER:-build}/${springAppName}"/>​
@@ -50,8 +50,8 @@
     </appender>
 
     ​​
-    <root level="INFO">
-        <!--<appender-ref ref="GELF"/>-->
+    <root level="ERROR">
+        <appender-ref ref="GELF"/>
         <appender-ref ref="console"/>
         <!-- uncomment this to have also JSON logs -->
         <!--<appender-ref ref="logstash"/>-->

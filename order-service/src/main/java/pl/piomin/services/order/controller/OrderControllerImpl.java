@@ -1,7 +1,6 @@
 package pl.piomin.services.order.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,8 +21,7 @@ public class OrderControllerImpl implements OrderController {
 
     @Override
     @RequestMapping(value = "/process", method = RequestMethod.POST)
-    public DeferredResult<ResponseEntity<Response<Order>>> process(@RequestBody Request<OrderDto> orderRequest) {
-        orderService.processOrder(orderRequest.getData());
-        return null;
+    public DeferredResult<Response<Order>> startProcessOrder(@RequestBody Request<OrderDto> orderRequest) {
+        return orderService.proceed(orderRequest);
     }
 }

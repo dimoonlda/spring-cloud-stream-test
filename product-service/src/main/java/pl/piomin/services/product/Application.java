@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.handler.annotation.SendTo;
 
 import pl.piomin.service.common.message.Order;
+import pl.piomin.service.common.message.Request;
 
 @SpringBootApplication
 @EnableBinding(Processor.class)
@@ -29,9 +30,9 @@ public class Application {
 
 	@StreamListener(Processor.INPUT)
 	@SendTo(Processor.OUTPUT)
-	public Order processOrder(Order order) {
+	public Request<Order> processOrder(Request<Order> order) {
 		logger.info("Processing order: " + order);
-		order.setProduct(productService.processOrder(order));
+		order.getData().setProduct(productService.processOrder(order.getData()));
 		logger.info("Output order: " + order);
 		return order;
 	}

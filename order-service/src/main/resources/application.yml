@@ -27,7 +27,7 @@ spring:
           destination: ex.stream.in
 #          binder: kafka1
         output:
-          destination: ex.stream.out
+          destination: rest-front_out
           group: order
 #          binder: kafka1
 #      binders:
@@ -40,5 +40,6 @@ spring:
 #                port: 9092
 server:  
   port: ${PORT:2222}
+fms.graylog.host: be-greylog.youa.vn.ua
 logging:
-  level.pl.piomin: debug
+  level.pl.piomin: info

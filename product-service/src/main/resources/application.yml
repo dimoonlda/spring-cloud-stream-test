@@ -24,10 +24,10 @@ spring:
             - messageSent
       bindings:
         input:
-          destination: ex.stream.out
+          destination: rest-front_out
           group: product
         output:
-          destination: ex.stream.out2
+          destination: payment_input
 
 server:  
   port: ${PORT:2223}

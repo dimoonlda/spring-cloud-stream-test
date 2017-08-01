@@ -26,11 +26,11 @@ spring:
           enabled: true
       bindings:
         input:
-          destination: ex.stream.out2
+          destination: payment_input
           group: payment
 #          binder: kafka1
-        output:
-          destination: ex.stream.out2
+#        output:
+#          destination: ex.stream.out2
 #          binder: kafka1
 #      binders:
 #        kafka1:

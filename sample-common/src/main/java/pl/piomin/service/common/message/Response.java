@@ -4,13 +4,14 @@ public class Response<T> {
     private String uuid;
     private String resultCode;
     private String resultMessage;
+    private String serverId;
     private T data;
 
     public String getUuid() {
         return uuid;
     }
 
-    public Response setUuid(String uuid) {
+    public Response<T> setUuid(String uuid) {
         this.uuid = uuid;
         return this;
     }
@@ -19,7 +20,7 @@ public class Response<T> {
         return resultCode;
     }
 
-    public Response setResultCode(String resultCode) {
+    public Response<T> setResultCode(String resultCode) {
         this.resultCode = resultCode;
         return this;
     }
@@ -28,7 +29,7 @@ public class Response<T> {
         return resultMessage;
     }
 
-    public Response setResultMessage(String resultMessage) {
+    public Response<T> setResultMessage(String resultMessage) {
         this.resultMessage = resultMessage;
         return this;
     }
@@ -37,8 +38,17 @@ public class Response<T> {
         return data;
     }
 
-    public Response setData(T data) {
+    public Response<T> setData(T data) {
         this.data = data;
+        return this;
+    }
+
+    public String getServerId() {
+        return serverId;
+    }
+
+    public Response<T> setServerId(String serverId) {
+        this.serverId = serverId;
         return this;
     }
 
@@ -48,6 +58,7 @@ public class Response<T> {
                 "uuid='" + uuid + '\'' +
                 ", resultCode='" + resultCode + '\'' +
                 ", resultMessage='" + resultMessage + '\'' +
+                ", serverId='" + serverId + '\'' +
                 ", data=" + data +
                 '}';
     }
