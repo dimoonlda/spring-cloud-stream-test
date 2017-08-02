@@ -30,7 +30,7 @@ spring:
           group: payment
 #          binder: kafka1
         output:
-          destination: ex.stream.out2
+          destination: ex.stream.in
 #          binder: kafka1
 #      binders:
 #        kafka1:
